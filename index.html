@@ -55,9 +55,10 @@
             position: fixed;
             pointer-events: none;
             z-index: 9999;
-            transition: transform 0.1s ease;
+            transition: left 0.08s ease, top 0.08s ease;
             mix-blend-mode: difference;
             transform: translate(-50%, -50%);
+            left: -50px; top: -50px;
         }
         #cursor-dot {
             width: 4px;
@@ -68,6 +69,7 @@
             pointer-events: none;
             z-index: 9999;
             transform: translate(-50%, -50%);
+            left: -50px; top: -50px;
         }
 
         .container {
@@ -290,9 +292,172 @@
         .shake { animation: shake-anim 0.4s cubic-bezier(.36,.07,.19,.97) both; }
         @keyframes shake-anim { 10%, 90% { transform: translate3d(-1px, 0, 0); } 30%, 70% { transform: translate3d(-3px, 0, 0); } 50% { transform: translate3d(3px, 0, 0); } }
 
+        /* Scenario Section */
+        .scenario-section {
+            margin-top: 25px;
+            border-top: 1px solid var(--grey);
+            padding-top: 20px;
+        }
+        .scenario-title {
+            color: var(--gold);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .scenario-card {
+            border: 1px solid var(--grey);
+            padding: 12px;
+            text-align: center;
+            background: rgba(255,255,255,0.02);
+            transition: var(--transition);
+        }
+        .scenario-card:hover {
+            border-color: var(--gold);
+            background: rgba(255,215,0,0.05);
+        }
+        .scenario-card .sc-label {
+            font-size: 0.7rem;
+            color: var(--dark-gold);
+            display: block;
+            margin-bottom: 5px;
+        }
+        .scenario-card .sc-val {
+            font-size: 1rem;
+            color: var(--gold);
+            font-weight: bold;
+        }
+        .recommendation-box {
+            border: 1px solid var(--dark-gold);
+            padding: 15px;
+            background: rgba(184,134,11,0.08);
+            font-size: 0.85rem;
+            line-height: 1.8;
+            color: var(--soft-white);
+        }
+        .recommendation-box .rec-title {
+            color: var(--gold);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .rec-item {
+            padding: 3px 0;
+            border-bottom: 1px solid rgba(255,215,0,0.1);
+        }
+        .rec-item:last-child { border-bottom: none; }
+        .rec-positive { color: var(--color-safe); }
+        .rec-negative { color: var(--color-critical); }
+
+        /* Saving Rate Badge */
+        .saving-rate-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 2px;
+            margin-top: 4px;
+            font-weight: bold;
+        }
+        .rate-low { background: rgba(255,77,77,0.2); color: #ff4d4d; border: 1px solid #ff4d4d; }
+        .rate-mid { background: rgba(255,166,77,0.2); color: #ffa64d; border: 1px solid #ffa64d; }
+        .rate-good { background: rgba(77,255,136,0.2); color: #4dff88; border: 1px solid #4dff88; }
+        .rate-great { background: rgba(0,255,255,0.2); color: #00ffff; border: 1px solid #00ffff; }
+
+        /* Scenario Section */
+        .scenario-card-outer {
+            background: rgba(0,0,0,0.85);
+            border: 1px solid var(--gold);
+            padding: 25px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 20px rgba(255,215,0,0.05);
+        }
+        .scenario-title {
+            color: var(--gold);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        .scenario-grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .sc-box {
+            border: 1px solid var(--grey);
+            padding: 14px 10px;
+            text-align: center;
+            background: rgba(255,255,255,0.02);
+            transition: var(--transition);
+        }
+        .sc-box:hover {
+            border-color: var(--gold);
+            background: rgba(255,215,0,0.05);
+        }
+        .sc-box .sc-lbl {
+            font-size: 0.68rem;
+            color: var(--dark-gold);
+            display: block;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .sc-box .sc-num {
+            font-size: 1.3rem;
+            color: var(--gold);
+            font-weight: bold;
+            display: block;
+        }
+        .sc-box .sc-sub {
+            font-size: 0.65rem;
+            color: var(--grey);
+            display: block;
+            margin-top: 3px;
+        }
+        .sc-faster { color: var(--color-safe) !important; }
+        .sc-inf { color: var(--color-critical) !important; }
+
+        /* Recommendation Box */
+        .rec-outer {
+            border: 1px solid var(--dark-gold);
+            padding: 15px;
+            background: rgba(184,134,11,0.07);
+        }
+        .rec-header {
+            color: var(--gold);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .rec-row {
+            padding: 5px 0;
+            font-size: 0.82rem;
+            border-bottom: 1px solid rgba(255,215,0,0.08);
+            line-height: 1.5;
+        }
+        .rec-row:last-child { border-bottom: none; }
+        .rec-green { color: var(--color-safe); }
+        .rec-red { color: var(--color-critical); }
+        .rec-warn { color: var(--color-warning); }
+        .rec-neutral { color: var(--soft-white); }
+
+        @media (max-width: 600px) { .scenario-grid-3 { grid-template-columns: 1fr; } }
+
         footer { text-align: center; margin-top: 40px; font-size: 0.7rem; color: var(--grey); letter-spacing: 1px; }
 
-        @media (max-width: 600px) { .result-grid { grid-template-columns: 1fr; } .glitch { font-size: 2rem; } }
+        @media (max-width: 600px) { .result-grid { grid-template-columns: 1fr; } .glitch { font-size: 2rem; } .scenario-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -367,6 +532,10 @@
                         <label>Status Kesiapan</label>
                         <span class="result-val" id="resStatus">SIAGA</span>
                     </div>
+                    <div class="result-item">
+                        <label>Saving Rate</label>
+                        <span class="result-val" id="resSavingRate">0%</span>
+                    </div>
                 </div>
 
                 <div class="progress-container">
@@ -428,8 +597,60 @@
                 </div>
             </div>
 
+            <!-- Skenario Nabung -->
+            <div class="card" id="scenario-card">
+                <div class="scenario-title">📊 Skenario Nabung</div>
+                <div class="scenario-grid">
+                    <div class="scenario-card">
+                        <span class="sc-label">Hemat 10%</span>
+                        <span class="sc-val" id="sc10">-</span>
+                        <span class="sc-label" style="margin-top:5px;">bulan</span>
+                    </div>
+                    <div class="scenario-card">
+                        <span class="sc-label">Hemat 25%</span>
+                        <span class="sc-val" id="sc25">-</span>
+                        <span class="sc-label" style="margin-top:5px;">bulan</span>
+                    </div>
+                    <div class="scenario-card">
+                        <span class="sc-label">Hemat 50%</span>
+                        <span class="sc-val" id="sc50">-</span>
+                        <span class="sc-label" style="margin-top:5px;">bulan</span>
+                    </div>
+                </div>
+                <div class="recommendation-box">
+                    <span class="rec-title">💡 Rekomendasi</span>
+                    <div id="recList"></div>
+                </div>
+            </div>
+
             <div class="roast-box" id="roastText">
                 "Loading data... Sabar mang, keur diitung nasibna."
+            </div>
+
+            <!-- SKENARIO NABUNG -->
+            <div class="scenario-card-outer" id="scenarioSection" style="display:none;">
+                <span class="scenario-title">📊 Skenario: Kalau Jajan Dipotong...</span>
+                <div class="scenario-grid-3">
+                    <div class="sc-box">
+                        <span class="sc-lbl">Hemat 10% Jajan</span>
+                        <span class="sc-num sc-faster" id="sc10">-</span>
+                        <span class="sc-sub" id="sc10-save"></span>
+                    </div>
+                    <div class="sc-box">
+                        <span class="sc-lbl">Hemat 25% Jajan</span>
+                        <span class="sc-num sc-faster" id="sc25">-</span>
+                        <span class="sc-sub" id="sc25-save"></span>
+                    </div>
+                    <div class="sc-box">
+                        <span class="sc-lbl">Hemat 50% Jajan</span>
+                        <span class="sc-num sc-faster" id="sc50">-</span>
+                        <span class="sc-sub" id="sc50-save"></span>
+                    </div>
+                </div>
+                <div class="rec-outer">
+                    <span class="rec-header">💡 Rekomendasi Keuangan</span>
+                    <div id="recList"></div>
+                </div>
             </div>
 
             <div class="terminal" id="terminal">
@@ -446,11 +667,20 @@
     </div>
 
     <script>
+        // --- Preset Months ---
+        function setPresetMonths(val) {
+            const targetMonthsInput = document.getElementById('targetMonths');
+            targetMonthsInput.value = val;
+            const months = parseFloat(val) || 0;
+            document.getElementById('countdown').innerText = Math.round(months * 30.44);
+            addLog(`Target Akad set to ${val} months.`);
+        }
+
         // --- Status Config ---
         const STATUS_DATA = {
             MANDATORY: {
                 color: 'var(--color-mandatory)',
-                label: 'PANGANGGURAN',
+                label: 'TEKOR MANG',
                 roasts: [
                     "Mending dagang cilok heula mang, boro-boro kawin, meuli kuota ge hese!",
                     "Gaji beak ku udud we? Hudang mang, ulah ngimpi kawin heula ari kieu mah.",
@@ -460,21 +690,22 @@
             },
             CRITICAL: {
                 color: 'var(--color-critical)',
-                label: 'LIEUR',
+                label: 'LIEUR PARAH',
                 roasts: [
                     "Ieu mah kawin taun gajah mang. Tabungan sakieu mah ngan cukup keur meuli kerupuk!",
-                    "Mending ulin ka BIP we mang, ulah mikiran kawin heula. Jauh keneh!",
+                    "Mending ulin ka BIP we mang, ulah mikiran kawin heula. Jauh keneh pisan!",
                     "Gaya hirup siga sultan, tabungan siga ampas tahu. Watir mang nyeleu na.",
-                    "Target 12 bulan, nabungna 100 taun deui. Mantap mang, teruskeun ngimpina!"
+                    "Target sabulan, nabungna 100 taun deui. Mantap mang, teruskeun ngimpina!"
                 ]
             },
             WARNING: {
                 color: 'var(--color-warning)',
-                label: 'KUDU HEMAT EUY',
+                label: 'KUDU HEMAT',
                 roasts: [
                     "Kudu puasa senin kemis ieu mah mang meh bisa akad tepat waktu.",
                     "Gaya hirup kurangan mang, tong udud teuing ari hayang kawin mah.",
-                    "Saeutik deui nyampe, tapi loba keneh kurangna. Semangat mang, tong udud we!",
+                    "Saeutik deui nyampe, tapi loba keneh kurangna. Semangat mang!",
+                    "Mending ngirit deui mang, bisi pas akad ngan bisa nyuguhi cai herang."
                 ]
             },
             SAFE: {
@@ -487,9 +718,9 @@
                     "Aman mang! Geus bisa mesen tenda biru jeung organ tunggal ieu mah."
                 ]
             },
-            RICH: {
+            SULTAN: {
                 color: 'var(--color-rich)',
-                label: 'Juragan Tanah',
+                label: 'SULTAN MODE',
                 roasts: [
                     "Wih, Juragan mah bebas! Kawin di Mars ge bisa ieu mah.",
                     "Tabungan luber euy. Ieu mah lain rek akad, tapi rek meuli gedungna sakalian.",
@@ -505,7 +736,6 @@
                 "Mang, target kawin na Rp {amount}? Rek akad di leuweung sugan?",
                 "Duit Rp {amount} mah ngan cukup keur meuli seblak sapanci mang. Rek kawin atanapi rek syukuran khitanan ucing? Watir euy!",
                 "Gaya hayang kawin tapi target biaya ngan Rp {amount}. Ieu mah lain rek akad, tapi rek simulasi kamiskinan ekstrim mang!",
-                "Rp {amount}? hungkul target kawinna? Ieu mah kawin paket 'Hemat Banget' mang. Tamu ondangan sina mawa sangu sorangan!",
                 "Target kawin Rp {amount} mah mending kawin lari we mang, ulah pake acara segala. Lieur ningalina ge!"
             ],
             MEDIUM_SAVAGE: [
@@ -516,9 +746,7 @@
             LIGHT_SAVAGE: [
                 "Rp {amount}? Masih kategori kawin hemat euy mang. Siap-siap ondangan ngan dikasih kerupuk jeung teh botol.",
                 "Target Rp {amount} mah pas-pasan pisan mang. Ulah loba gaya hayang pake organ tunggal, mending pake speaker bluetooth!",
-                "Rp {amount} mah ngan cukup keur meuli rendang sakilo mang. Tamu ondangan sina silih ganti daharna kitu? Gaya pisan!",
-                "Gaya hayang kawin target Rp {amount}. Bisa sih, tapi ulah loba ondangan mang, bisi isin pas prasmanan beak tiheula!",
-                "Target Rp {amount} mah mending neangan gedung nu murah mang, bisi beak ku sewa gedung hungkul. Lieur!"
+                "Gaya hayang kawin target Rp {amount}. Bisa sih, tapi ulah loba ondangan mang, bisi isin pas prasmanan beak tiheula!"
             ]
         };
 
@@ -538,8 +766,12 @@
         // --- Custom Cursor Logic ---
         document.addEventListener('mousemove', (e) => {
             const x = e.clientX, y = e.clientY;
-            cursor.style.transform = `translate(${x}px, ${y}px)`;
-            dot.style.transform = `translate(${x}px, ${y}px)`;
+            cursor.style.left = x + 'px';
+            cursor.style.top = y + 'px';
+            cursor.style.transform = 'translate(-50%, -50%)';
+            dot.style.left = x + 'px';
+            dot.style.top = y + 'px';
+            dot.style.transform = 'translate(-50%, -50%)';
         });
 
         // --- Audio Feedback ---
@@ -576,12 +808,6 @@
         function updateCountdown() {
             const months = parseFloat(targetMonthsInput.value) || 0;
             countdownDisplay.innerText = Math.round(months * 30.44);
-        }
-
-        function setPresetMonths(val) {
-            targetMonthsInput.value = val;
-            updateCountdown();
-            addLog(`Target Akad set to ${val} months.`);
         }
 
         function checkExpenseWarning() {
@@ -624,14 +850,6 @@
 
         targetMonthsInput.addEventListener('input', updateCountdown);
 
-        // --- F12 / DevTools Blocker ---
-        document.onkeydown = (e) => {
-            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73)) {
-                alert("Eits! Fokus nabung wae mang, ulah sare teuing!");
-                return false;
-            }
-        };
-
         // --- Main Calculation Logic ---
         let currentStatus = null;
         let lastResult = {};
@@ -667,7 +885,12 @@
                 document.getElementById('input-section').style.display = 'none';
                 document.getElementById('result-section').style.display = 'block';
                 resultCard.style.display = 'none'; 
+                document.getElementById('scenario-card').style.display = 'none';
+                const scenEl2 = document.getElementById('scenarioSection');
+                if (scenEl2) scenEl2.style.display = 'none';
+                document.getElementById('terminal').style.display = 'none';
                 document.getElementById('roastText').innerText = `"${randomRoast}"`;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
                 
                 addLog(`Low budget detected: Rp ${rawAmount}. Analysis aborted.`);
                 return;
@@ -679,27 +902,29 @@
             const expenses = parseCurrency(document.getElementById('expenses').value);
             const targetMonths = parseFloat(targetMonthsInput.value) || 1;
 
-            const monthlySaving = (salary + partnerSalary) - expenses;
+            const totalIncome = salary + partnerSalary;
+            const monthlySaving = totalIncome - expenses;
             const gap = targetCost - currentSavings;
             const monthsNeeded = monthlySaving > 0 ? Math.ceil(gap / monthlySaving) : Infinity;
             const progress = Math.min(100, (currentSavings / targetCost) * 100);
+            const savingRate = totalIncome > 0 ? (monthlySaving / totalIncome) * 100 : 0;
 
-            // --- Status Logic ---
+            // --- ADVANCED STATUS LOGIC (FIXED) ---
             let status;
             if (monthlySaving <= 0) {
                 status = STATUS_DATA.MANDATORY;
-            } else if (monthsNeeded > targetMonths * 3) {
-                status = STATUS_DATA.CRITICAL;
-            } else if (monthsNeeded > targetMonths) {
-                status = STATUS_DATA.WARNING;
-            } else if (monthsNeeded <= targetMonths && monthsNeeded > targetMonths * 0.5) {
+            } else if (progress >= 100 || (gap < 10000000 && monthsNeeded <= 12)) {
+                status = STATUS_DATA.SULTAN;
+            } else if (monthsNeeded <= targetMonths || progress >= 70) {
                 status = STATUS_DATA.SAFE;
+            } else if (monthsNeeded <= 36) {
+                status = STATUS_DATA.WARNING;
             } else {
-                status = STATUS_DATA.RICH;
+                status = STATUS_DATA.CRITICAL;
             }
 
             currentStatus = status;
-            lastResult = { gap, monthsNeeded, monthlySaving, targetMonths, targetCost };
+            lastResult = { gap, monthsNeeded, monthlySaving, targetMonths, targetCost, savingRate };
 
             // Update UI
             document.documentElement.style.setProperty('--status-color', status.color);
@@ -728,6 +953,28 @@
             // Budget Breakdown
             updateBudgetVisuals();
 
+            // Saving Rate
+            const srEl = document.getElementById('resSavingRate');
+            if (srEl) {
+                const rate = Math.round(savingRate);
+                let rateCls = rate < 10 ? 'rec-red' : rate < 20 ? 'rec-warn' : rate < 30 ? '' : 'rec-green';
+                srEl.innerText = `${rate}%`;
+                srEl.className = 'result-val ' + rateCls;
+            }
+
+            // Scenario & Recs
+            const scenEl = document.getElementById('scenarioSection');
+            if (scenEl) {
+                scenEl.style.display = 'block';
+                updateScenariosNew(gap, monthlySaving, expenses, status, savingRate, currentSavings, targetCost, partnerSalary);
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Scenario & Recommendations
+            updateScenarios(gap, monthlySaving, currentSavings, targetCost, totalIncome, expenses, savingRate, status);
+
             // Roasting
             const roastText = document.getElementById('roastText');
             const randomRoast = status.roasts[Math.floor(Math.random() * status.roasts.length)];
@@ -737,6 +984,7 @@
             document.getElementById('input-section').style.display = 'none';
             document.getElementById('result-section').style.display = 'block';
             resultCard.style.display = 'block'; 
+            document.getElementById('scenario-card').style.display = 'block';
             savageAlert.style.display = 'none';
 
             // Terminal Breakdown Animation
@@ -789,12 +1037,132 @@ Cek nasib kawin lu juga! ${window.location.href}`;
             window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
         });
 
-        // Back Button Logic (Keeps data)
+        // Back Button Logic
         backBtn.addEventListener('click', () => {
             document.getElementById('result-section').style.display = 'none';
             document.getElementById('input-section').style.display = 'block';
+            document.getElementById('terminal').style.display = 'block';
+            const scenEl = document.getElementById('scenarioSection');
+            if (scenEl) scenEl.style.display = 'none';
             addLog("Returned to input screen. Data preserved.");
         });
+
+        function updateScenarios(gap, monthlySaving, currentSavings, targetCost, totalIncome, expenses, savingRate, status) {
+            function calcMonths(extraSaving) {
+                const newSaving = monthlySaving + extraSaving;
+                if (newSaving <= 0) return '∞';
+                const m = gap <= 0 ? 0 : Math.ceil(gap / newSaving);
+                return m;
+            }
+
+            const sc10months = calcMonths(expenses * 0.10);
+            const sc25months = calcMonths(expenses * 0.25);
+            const sc50months = calcMonths(expenses * 0.50);
+
+            document.getElementById('sc10').innerText = sc10months === '∞' ? '∞' : sc10months;
+            document.getElementById('sc25').innerText = sc25months === '∞' ? '∞' : sc25months;
+            document.getElementById('sc50').innerText = sc50months === '∞' ? '∞' : sc50months;
+
+            // Recommendations
+            const recList = document.getElementById('recList');
+            const recs = [];
+            const rate = Math.round(savingRate);
+
+            if (status === STATUS_DATA.MANDATORY) {
+                recs.push({ cls: 'rec-negative', text: `🚨 EMERGENCY: Gaji beak ku jajan hungkul! Moal bisa kawin mang ari kieu mah.` });
+            } else if (status === STATUS_DATA.CRITICAL) {
+                recs.push({ cls: 'rec-negative', text: `⚠️ KRITIS: Butuh waktu lila teuing (${lastResult.monthsNeeded} bulan). Kudu loba motong budget!` });
+            } else if (status === STATUS_DATA.WARNING) {
+                recs.push({ cls: 'rec-positive', text: `⚖️ LUMAYAN: Masih realistis, tapi kudu leuwih disiplin nabung meh aman.` });
+            } else if (status === STATUS_DATA.SAFE) {
+                recs.push({ cls: 'rec-positive', text: `🌟 AMAN: Geus di jalur nu bener mang. Gaskeun akad!` });
+            } else {
+                recs.push({ cls: 'rec-positive', text: `💎 SULTAN: Tabungan geus kandel pisan! Tinggal neangan tanggal nu pas.` });
+            }
+
+            // Additional advice
+            if (gap > 0 && monthlySaving > 0) {
+                const potong200 = calcMonths(200000);
+                recs.push({ cls: '', text: `📌 Tips: Potong Rp 200rb/bln jajan → akad bisa maju ke ${potong200} bulan.` });
+            }
+
+            recList.innerHTML = recs.map(r => `<div class="rec-item ${r.cls}">${r.text}</div>`).join('');
+        }
+
+        function updateScenariosNew(gap, monthlySaving, expenses, status, savingRate, currentSavings, targetCost, partnerSalary) {
+            function calcMonthsNew(extra) {
+                const ns = monthlySaving + extra;
+                if (ns <= 0) return null;
+                if (gap <= 0) return 0;
+                return Math.ceil(gap / ns);
+            }
+            function monthLabel(m) {
+                if (m === null) return { val: '∞', cls: 'sc-inf' };
+                if (m === 0) return { val: '✅ 0', cls: 'sc-faster' };
+                return { val: m, cls: 'sc-faster' };
+            }
+            function saving(pct) { return expenses * pct; }
+
+            const scenarios = [
+                { id: 'sc10', idSub: 'sc10-save', extra: saving(0.10), pct: '10%' },
+                { id: 'sc25', idSub: 'sc25-save', extra: saving(0.25), pct: '25%' },
+                { id: 'sc50', idSub: 'sc50-save', extra: saving(0.50), pct: '50%' },
+            ];
+
+            scenarios.forEach(sc => {
+                const m = calcMonthsNew(sc.extra);
+                const lbl = monthLabel(m);
+                const el = document.getElementById(sc.id);
+                const elSub = document.getElementById(sc.idSub);
+                if (el) {
+                    el.innerText = lbl.val + (m !== null && m > 0 ? ' bln' : '');
+                    el.className = 'sc-num ' + lbl.cls;
+                }
+                if (elSub) elSub.innerText = sc.extra > 0 ? `hemat ${formatIDR(sc.extra)}/bln` : '-';
+            });
+
+            // Recommendations
+            const recEl = document.getElementById('recList');
+            if (!recEl) return;
+            const recs = [];
+            const rate = Math.round(savingRate);
+
+            // Saving rate assessment
+            if (rate <= 0) {
+                recs.push({ cls: 'rec-red', text: '🚨 Saving rate 0% atau minus! Pengeluaran harus dipotong dulu sebelum bisa nabung.' });
+            } else if (rate < 10) {
+                recs.push({ cls: 'rec-red', text: `⚠️ Saving rate ${rate}% — terlalu kecil. Idealnya minimal 20% dari pemasukan.` });
+            } else if (rate < 20) {
+                recs.push({ cls: 'rec-warn', text: `📊 Saving rate ${rate}% — masih di bawah ideal. Coba tekan pengeluaran biar bisa 20%+.` });
+            } else if (rate < 35) {
+                recs.push({ cls: 'rec-green', text: `✅ Saving rate ${rate}% — lumayan bagus! Pertahankan konsistensinya mang.` });
+            } else {
+                recs.push({ cls: 'rec-green', text: `💪 Saving rate ${rate}% — mantap pisan! Udah di level sultan saver.` });
+            }
+
+            // Progress assessment
+            const progress = currentSavings > 0 ? Math.round((currentSavings / targetCost) * 100) : 0;
+            if (progress >= 100) {
+                recs.push({ cls: 'rec-green', text: `🎉 Tabungan udah 100%+! Gaskeun langsung cari tanggal akad mang!` });
+            } else if (progress >= 50) {
+                recs.push({ cls: 'rec-green', text: `📈 Tabungan udah ${progress}% dari target — lebih dari setengah jalan, gas terus!` });
+            } else if (progress > 0) {
+                recs.push({ cls: 'rec-warn', text: `📉 Tabungan baru ${progress}% dari target. Masih perlu effort lebih mang.` });
+            }
+
+            // Partner salary tip
+            if (!partnerSalary || partnerSalary === 0) {
+                recs.push({ cls: 'rec-neutral', text: `👫 Gaji pasangan belum diisi — kalau digabung, proses nabungnya bisa jauh lebih cepet!` });
+            }
+
+            // Quick win tip
+            if (gap > 0 && monthlySaving > 0) {
+                const potong = Math.ceil(gap / (monthlySaving + 500000));
+                recs.push({ cls: 'rec-neutral', text: `💡 Tambahin Rp 500rb/bln aja → bisa akad dalam ${potong} bulan.` });
+            }
+
+            recEl.innerHTML = recs.map(r => `<div class="rec-row ${r.cls}">${r.text}</div>`).join('');
+        }
 
         function formatIDR(num) {
             return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(num);
