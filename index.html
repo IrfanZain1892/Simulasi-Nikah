@@ -357,104 +357,6 @@
         .rec-positive { color: var(--color-safe); }
         .rec-negative { color: var(--color-critical); }
 
-        /* Saving Rate Badge */
-        .saving-rate-badge {
-            display: inline-block;
-            font-size: 0.75rem;
-            padding: 2px 8px;
-            border-radius: 2px;
-            margin-top: 4px;
-            font-weight: bold;
-        }
-        .rate-low { background: rgba(255,77,77,0.2); color: #ff4d4d; border: 1px solid #ff4d4d; }
-        .rate-mid { background: rgba(255,166,77,0.2); color: #ffa64d; border: 1px solid #ffa64d; }
-        .rate-good { background: rgba(77,255,136,0.2); color: #4dff88; border: 1px solid #4dff88; }
-        .rate-great { background: rgba(0,255,255,0.2); color: #00ffff; border: 1px solid #00ffff; }
-
-        /* Scenario Section */
-        .scenario-card-outer {
-            background: rgba(0,0,0,0.85);
-            border: 1px solid var(--gold);
-            padding: 25px 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 0 20px rgba(255,215,0,0.05);
-        }
-        .scenario-title {
-            color: var(--gold);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            display: block;
-        }
-        .scenario-grid-3 {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .sc-box {
-            border: 1px solid var(--grey);
-            padding: 14px 10px;
-            text-align: center;
-            background: rgba(255,255,255,0.02);
-            transition: var(--transition);
-        }
-        .sc-box:hover {
-            border-color: var(--gold);
-            background: rgba(255,215,0,0.05);
-        }
-        .sc-box .sc-lbl {
-            font-size: 0.68rem;
-            color: var(--dark-gold);
-            display: block;
-            margin-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .sc-box .sc-num {
-            font-size: 1.3rem;
-            color: var(--gold);
-            font-weight: bold;
-            display: block;
-        }
-        .sc-box .sc-sub {
-            font-size: 0.65rem;
-            color: var(--grey);
-            display: block;
-            margin-top: 3px;
-        }
-        .sc-faster { color: var(--color-safe) !important; }
-        .sc-inf { color: var(--color-critical) !important; }
-
-        /* Recommendation Box */
-        .rec-outer {
-            border: 1px solid var(--dark-gold);
-            padding: 15px;
-            background: rgba(184,134,11,0.07);
-        }
-        .rec-header {
-            color: var(--gold);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-            display: block;
-        }
-        .rec-row {
-            padding: 5px 0;
-            font-size: 0.82rem;
-            border-bottom: 1px solid rgba(255,215,0,0.08);
-            line-height: 1.5;
-        }
-        .rec-row:last-child { border-bottom: none; }
-        .rec-green { color: var(--color-safe); }
-        .rec-red { color: var(--color-critical); }
-        .rec-warn { color: var(--color-warning); }
-        .rec-neutral { color: var(--soft-white); }
-
-        @media (max-width: 600px) { .scenario-grid-3 { grid-template-columns: 1fr; } }
-
         footer { text-align: center; margin-top: 40px; font-size: 0.7rem; color: var(--grey); letter-spacing: 1px; }
 
         @media (max-width: 600px) { .result-grid { grid-template-columns: 1fr; } .glitch { font-size: 2rem; } .scenario-grid { grid-template-columns: 1fr; } }
@@ -531,10 +433,6 @@
                     <div class="result-item">
                         <label>Status Kesiapan</label>
                         <span class="result-val" id="resStatus">SIAGA</span>
-                    </div>
-                    <div class="result-item">
-                        <label>Saving Rate</label>
-                        <span class="result-val" id="resSavingRate">0%</span>
                     </div>
                 </div>
 
@@ -625,32 +523,6 @@
 
             <div class="roast-box" id="roastText">
                 "Loading data... Sabar mang, keur diitung nasibna."
-            </div>
-
-            <!-- SKENARIO NABUNG -->
-            <div class="scenario-card-outer" id="scenarioSection" style="display:none;">
-                <span class="scenario-title">📊 Skenario: Kalau Jajan Dipotong...</span>
-                <div class="scenario-grid-3">
-                    <div class="sc-box">
-                        <span class="sc-lbl">Hemat 10% Jajan</span>
-                        <span class="sc-num sc-faster" id="sc10">-</span>
-                        <span class="sc-sub" id="sc10-save"></span>
-                    </div>
-                    <div class="sc-box">
-                        <span class="sc-lbl">Hemat 25% Jajan</span>
-                        <span class="sc-num sc-faster" id="sc25">-</span>
-                        <span class="sc-sub" id="sc25-save"></span>
-                    </div>
-                    <div class="sc-box">
-                        <span class="sc-lbl">Hemat 50% Jajan</span>
-                        <span class="sc-num sc-faster" id="sc50">-</span>
-                        <span class="sc-sub" id="sc50-save"></span>
-                    </div>
-                </div>
-                <div class="rec-outer">
-                    <span class="rec-header">💡 Rekomendasi Keuangan</span>
-                    <div id="recList"></div>
-                </div>
             </div>
 
             <div class="terminal" id="terminal">
@@ -886,11 +758,7 @@
                 document.getElementById('result-section').style.display = 'block';
                 resultCard.style.display = 'none'; 
                 document.getElementById('scenario-card').style.display = 'none';
-                const scenEl2 = document.getElementById('scenarioSection');
-                if (scenEl2) scenEl2.style.display = 'none';
-                document.getElementById('terminal').style.display = 'none';
                 document.getElementById('roastText').innerText = `"${randomRoast}"`;
-                window.scrollTo({ top: 0, behavior: 'smooth' });
                 
                 addLog(`Low budget detected: Rp ${rawAmount}. Analysis aborted.`);
                 return;
@@ -952,25 +820,6 @@
 
             // Budget Breakdown
             updateBudgetVisuals();
-
-            // Saving Rate
-            const srEl = document.getElementById('resSavingRate');
-            if (srEl) {
-                const rate = Math.round(savingRate);
-                let rateCls = rate < 10 ? 'rec-red' : rate < 20 ? 'rec-warn' : rate < 30 ? '' : 'rec-green';
-                srEl.innerText = `${rate}%`;
-                srEl.className = 'result-val ' + rateCls;
-            }
-
-            // Scenario & Recs
-            const scenEl = document.getElementById('scenarioSection');
-            if (scenEl) {
-                scenEl.style.display = 'block';
-                updateScenariosNew(gap, monthlySaving, expenses, status, savingRate, currentSavings, targetCost, partnerSalary);
-            }
-
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
 
             // Scenario & Recommendations
             updateScenarios(gap, monthlySaving, currentSavings, targetCost, totalIncome, expenses, savingRate, status);
@@ -1041,9 +890,6 @@ Cek nasib kawin lu juga! ${window.location.href}`;
         backBtn.addEventListener('click', () => {
             document.getElementById('result-section').style.display = 'none';
             document.getElementById('input-section').style.display = 'block';
-            document.getElementById('terminal').style.display = 'block';
-            const scenEl = document.getElementById('scenarioSection');
-            if (scenEl) scenEl.style.display = 'none';
             addLog("Returned to input screen. Data preserved.");
         });
 
@@ -1087,81 +933,6 @@ Cek nasib kawin lu juga! ${window.location.href}`;
             }
 
             recList.innerHTML = recs.map(r => `<div class="rec-item ${r.cls}">${r.text}</div>`).join('');
-        }
-
-        function updateScenariosNew(gap, monthlySaving, expenses, status, savingRate, currentSavings, targetCost, partnerSalary) {
-            function calcMonthsNew(extra) {
-                const ns = monthlySaving + extra;
-                if (ns <= 0) return null;
-                if (gap <= 0) return 0;
-                return Math.ceil(gap / ns);
-            }
-            function monthLabel(m) {
-                if (m === null) return { val: '∞', cls: 'sc-inf' };
-                if (m === 0) return { val: '✅ 0', cls: 'sc-faster' };
-                return { val: m, cls: 'sc-faster' };
-            }
-            function saving(pct) { return expenses * pct; }
-
-            const scenarios = [
-                { id: 'sc10', idSub: 'sc10-save', extra: saving(0.10), pct: '10%' },
-                { id: 'sc25', idSub: 'sc25-save', extra: saving(0.25), pct: '25%' },
-                { id: 'sc50', idSub: 'sc50-save', extra: saving(0.50), pct: '50%' },
-            ];
-
-            scenarios.forEach(sc => {
-                const m = calcMonthsNew(sc.extra);
-                const lbl = monthLabel(m);
-                const el = document.getElementById(sc.id);
-                const elSub = document.getElementById(sc.idSub);
-                if (el) {
-                    el.innerText = lbl.val + (m !== null && m > 0 ? ' bln' : '');
-                    el.className = 'sc-num ' + lbl.cls;
-                }
-                if (elSub) elSub.innerText = sc.extra > 0 ? `hemat ${formatIDR(sc.extra)}/bln` : '-';
-            });
-
-            // Recommendations
-            const recEl = document.getElementById('recList');
-            if (!recEl) return;
-            const recs = [];
-            const rate = Math.round(savingRate);
-
-            // Saving rate assessment
-            if (rate <= 0) {
-                recs.push({ cls: 'rec-red', text: '🚨 Saving rate 0% atau minus! Pengeluaran harus dipotong dulu sebelum bisa nabung.' });
-            } else if (rate < 10) {
-                recs.push({ cls: 'rec-red', text: `⚠️ Saving rate ${rate}% — terlalu kecil. Idealnya minimal 20% dari pemasukan.` });
-            } else if (rate < 20) {
-                recs.push({ cls: 'rec-warn', text: `📊 Saving rate ${rate}% — masih di bawah ideal. Coba tekan pengeluaran biar bisa 20%+.` });
-            } else if (rate < 35) {
-                recs.push({ cls: 'rec-green', text: `✅ Saving rate ${rate}% — lumayan bagus! Pertahankan konsistensinya mang.` });
-            } else {
-                recs.push({ cls: 'rec-green', text: `💪 Saving rate ${rate}% — mantap pisan! Udah di level sultan saver.` });
-            }
-
-            // Progress assessment
-            const progress = currentSavings > 0 ? Math.round((currentSavings / targetCost) * 100) : 0;
-            if (progress >= 100) {
-                recs.push({ cls: 'rec-green', text: `🎉 Tabungan udah 100%+! Gaskeun langsung cari tanggal akad mang!` });
-            } else if (progress >= 50) {
-                recs.push({ cls: 'rec-green', text: `📈 Tabungan udah ${progress}% dari target — lebih dari setengah jalan, gas terus!` });
-            } else if (progress > 0) {
-                recs.push({ cls: 'rec-warn', text: `📉 Tabungan baru ${progress}% dari target. Masih perlu effort lebih mang.` });
-            }
-
-            // Partner salary tip
-            if (!partnerSalary || partnerSalary === 0) {
-                recs.push({ cls: 'rec-neutral', text: `👫 Gaji pasangan belum diisi — kalau digabung, proses nabungnya bisa jauh lebih cepet!` });
-            }
-
-            // Quick win tip
-            if (gap > 0 && monthlySaving > 0) {
-                const potong = Math.ceil(gap / (monthlySaving + 500000));
-                recs.push({ cls: 'rec-neutral', text: `💡 Tambahin Rp 500rb/bln aja → bisa akad dalam ${potong} bulan.` });
-            }
-
-            recEl.innerHTML = recs.map(r => `<div class="rec-row ${r.cls}">${r.text}</div>`).join('');
         }
 
         function formatIDR(num) {
